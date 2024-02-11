@@ -122,20 +122,23 @@ x.addEventListener("click", function () {
   });
 });
 
+
+
+
 searchProd.addEventListener("input", function () {
   let searchList = [];
+  let searchValue = this.value.toLowerCase();
   for (let i = 0; i < productList.length; i++) {
-    if (productList[i].name.toLowerCase().includes(this.value.toLowerCase())) {
-      productList[i].newName = productList[i].name.replace(
-        this.value,
-        `<spam class="text-danger">${this.value}</spam>`
-      );
+    let productName = productList[i].name.toLowerCase();
+    if (productName.includes(searchValue)) {
+      let newName = productList[i].name.replace(new RegExp(searchValue, 'gi'), match => `<span class="text-danger">${match}</span>`);
+      productList[i].newName = newName;
       searchList.push(productList[i]);
-      console.log(searchList);
-      displayProducts(searchList);
     }
   }
+  displayProducts(searchList);
 });
+
 
 
 // Validation Product
