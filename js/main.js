@@ -7,6 +7,7 @@ let productDesc = document.querySelector("#productDesc");
 let addBtnProduct = document.querySelector("#addBtnProduct");
 let upDataBtnProduct = document.querySelector("#upDataBtnProduct");
 let searchProd = document.querySelector("#searchProd");
+let x = document.querySelector("#x");
 
 let productList = [];
 
@@ -22,6 +23,7 @@ function getProduct() {
     category: productCategory.value,
     desc: productDesc.value,
   };
+
   if(validateProductName() && validateProductPrice() && validateProductCategory() && validateProductDesc()) {
     productList.push(product);
     displayProducts(productList);
@@ -100,7 +102,7 @@ upDataBtnProduct.addEventListener("click", () => {
   upDataBtnProduct.classList.replace("d-inline", "d-none");
 });
 
-let x = document.querySelector("#x");
+
 x.addEventListener("click", function () {
   Swal.fire({
     title: "Delete All Data?",
@@ -136,6 +138,8 @@ searchProd.addEventListener("input", function () {
 });
 
 
+// Validation Product
+
 function validateProductName() {
   let regex = /^[A-Z][a-z]{2,}$/;
   if (regex.test(productName.value)) {
@@ -150,7 +154,7 @@ function validateProductName() {
 }
 
 function validateProductPrice() {
-  let regex = /([1-9][0-9]{3}|10000)$/;
+  let regex = /(^[1-9][0-9]{3}|10000)$/;
   if (regex.test(productPrice.value)) {
     productPrice.classList.remove("is-invalid");
     productPrice.classList.add("is-valid");
@@ -187,7 +191,6 @@ function validateProductDesc() {
     return false;
   }
 }
-
 
 function removeValidClass() {
   productName.classList.remove("is-valid");

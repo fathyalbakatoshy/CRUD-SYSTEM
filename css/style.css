@@ -1,9 +1,9 @@
-input, button {
+input, button, textarea {
     border-radius: 0 !important;
 
 }
 
-input:focus {
+input:focus, textarea:focus  {
     color: var(--bs-body-color);
     background-color: var(--bs-body-bg);
     border-color: #000000 !important;
